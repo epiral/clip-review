@@ -1,0 +1,6 @@
+node_modules
+frontend
+.git
+.DS_Store
+*.md
+*.test.ts

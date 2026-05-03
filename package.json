@@ -1,0 +1,16 @@
+{
+  "name": "@cp/review",
+  "version": "0.2.0",
+  "description": "Spaced repetition review — knowledge points, flashcards, questions",
+  "type": "module",
+  "bin": {
+    "clip-review": "index.ts"
+  },
+  "dependencies": {
+    "@pinixai/core": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.11",
+    "typescript": "^5.9.3"
+  }
+}

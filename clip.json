@@ -1,6 +1,6 @@
 {
   "name": "@cp/review",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "间隔重复复习 — 知识点、抽认卡、问题",
   "runtime": "bun",
   "main": "index.ts",

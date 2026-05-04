@@ -52,7 +52,7 @@ export default function DeckDetail() {
           <Button size="lg" variant="outline" className="flex-1 sm:flex-none" onClick={() => window.location.hash = "graph"}>
             知识网络
           </Button>
-          <Button size="lg" className="flex-1 sm:flex-none shadow-sm" onClick={() => window.location.hash = "review"}>
+          <Button size="lg" className="flex-1 sm:flex-none shadow-sm" onClick={() => window.location.hash = `review/${deckId}`}>
             开始复习 ({stats.due_today})
           </Button>
         </div>

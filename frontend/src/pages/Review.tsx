@@ -17,7 +17,7 @@ function kpToItems(kp: KPDetail): DueItem[] {
   return [...fcs, ...qs];
 }
 
-export default function Review({ kpId }: { kpId?: string } = {}) {
+export default function Review({ kpId, deckId }: { kpId?: string; deckId?: string } = {}) {
   const [items, setItems] = useState<DueItem[] | null>(null);
   const [current, setCurrent] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -27,9 +27,9 @@ export default function Review({ kpId }: { kpId?: string } = {}) {
     if (kpId) {
       api.get<KPDetail>(kpId).then(kp => setItems(kpToItems(kp)));
     } else {
-      api.getDue().then(result => setItems(result.items));
+      api.getDue(deckId).then(result => setItems(result.items));
     }
-  }, [kpId]);
+  }, [kpId, deckId]);
 
   const handleRate = (rating: number) => {
     if (!items) return;
@@ -50,8 +50,8 @@ export default function Review({ kpId }: { kpId?: string } = {}) {
         <div className="text-6xl mb-6">🎉</div>
         <h1 className="text-3xl font-bold mb-2">{kpId ? "练习完成" : "今日复习完成"}</h1>
         <p className="text-muted-foreground mb-8">完成了 {items.length} 个项目</p>
-        <Button size="lg" onClick={() => window.location.hash = kpId ? `kp/${kpId}` : ""}>
-          {kpId ? "返回知识点" : "返回首页"}
+        <Button size="lg" onClick={() => window.location.hash = kpId ? `kp/${kpId}` : deckId ? `deck/${deckId}` : ""}>
+          {kpId ? "返回知识点" : deckId ? "返回卡组" : "返回首页"}
         </Button>
       </div>
     );
@@ -65,7 +65,7 @@ export default function Review({ kpId }: { kpId?: string } = {}) {
       {/* 顶部导航 */}
       <header className="shrink-0">
         <div className="flex items-center justify-between px-4 h-14">
-          <a href={kpId ? `#kp/${kpId}` : "#"} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href={kpId ? `#kp/${kpId}` : deckId ? `#deck/${deckId}` : "#"} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             ← 返回
           </a>
           <span className="text-sm font-semibold tabular-nums">

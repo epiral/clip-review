@@ -1,6 +1,6 @@
 {
   "name": "@cp/review",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Spaced repetition review — knowledge points, flashcards, questions",
   "type": "module",
   "bin": {

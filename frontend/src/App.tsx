@@ -19,6 +19,7 @@ export default function App() {
   const hash = useHash();
 
   if (hash === "review") return <Review />;
+  if (hash.startsWith("review/")) return <Review deckId={hash.split("/")[1]} />;
   if (hash.startsWith("practice/")) return <Review kpId={hash.split("/")[1]} />;
   if (hash === "graph") return <Graph />;
   if (hash.startsWith("deck/")) return <DeckDetail />;
